@@ -1,4 +1,4 @@
-use Oberth::Common::Setup;
+use Oberth::Manoeuvre::Common::Setup;
 package Oberth::CLI::Command::Account;
 # ABSTRACT: A subcommand for accounts
 

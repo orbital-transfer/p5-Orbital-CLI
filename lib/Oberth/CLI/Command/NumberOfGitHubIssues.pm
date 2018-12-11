@@ -1,8 +1,8 @@
-use Oberth::Common::Setup;
+use Oberth::Manoeuvre::Common::Setup;
 package Oberth::CLI::Command::NumberOfGitHubIssues;
 # ABSTRACT: A command to list the number of GitHub issues for a repository
 
-use Oberth::Service::Coveralls;
+use Oberth::Block::Service::Coveralls;
 
 use Moo;
 use CLI::Osprey;
