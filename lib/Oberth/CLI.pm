@@ -4,16 +4,38 @@ package Oberth::CLI;
 
 use Moo;
 use CLI::Osprey;
+use Hash::Merge;
+use Module::Load;
+use Module::Pluggable require => 1, search_path => ['Oberth::CLI::Container'];
 
-subcommand 'github-issue-count' => 'Oberth::CLI::Command::NumberOfGitHubIssues';
-subcommand account => 'Oberth::CLI::Command::Account';
+classmethod _load_commands() {
+	my $merger = Hash::Merge->new('LEFT_PRECEDENT');
+	my $merged = {
+		''        ,=> __PACKAGE__,
+		'service'  => 'Oberth::CLI::Service',
+		'account'  => 'Oberth::CLI::Command::Account',
+	};
 
-subcommand 'travis-ci' => 'Oberth::CLI::Command::TravisCI';
-subcommand 'coveralls' => 'Oberth::CLI::Command::Coveralls';
-subcommand 'appveyor' => 'Oberth::CLI::Command::AppVeyor';
+	for my $plugin ($class->plugins) {
+		$merged = $merger->merge( $merged, $plugin->commands );
+	}
+	for my $key (keys %$merged) {
+		next unless $key;
+		{
+			no strict 'refs'; ## no critic
+			my ($pre, $post) = $key =~ m,(?:(.*)/)?([^/]+),;
+			$pre //= '';
+			load $merged->{$pre} if $pre;
+			&{ $merged->{$pre} . '::subcommand'}($post => $merged->{$key});
+		}
+	}
+}
+
 
 method run(@) {
 	...
 }
+
+__PACKAGE__->_load_commands;
 
 1;
