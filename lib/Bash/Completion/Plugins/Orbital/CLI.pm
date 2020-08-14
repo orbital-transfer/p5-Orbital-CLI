@@ -1,5 +1,5 @@
-package Bash::Completion::Plugins::Oberth::CLI;
-# ABSTRACT: Bash::Completion plugin for Oberth::CLI
+package Bash::Completion::Plugins::Orbital::CLI;
+# ABSTRACT: Bash::Completion plugin for Orbital::CLI
 
 use Modern::Perl;
 use parent 'Bash::Completion::Plugins::CLI::Osprey';
@@ -38,9 +38,9 @@ sub complete_option {
 }
 
 sub should_activate {
-	return [ grep { command_in_path($_) } qw(oberth-cli) ];
+	return [ grep { command_in_path($_) } qw(orbital-cli) ];
 }
 
-sub command_class { 'Oberth::CLI' }
+sub command_class { 'Orbital::CLI' }
 
 1;

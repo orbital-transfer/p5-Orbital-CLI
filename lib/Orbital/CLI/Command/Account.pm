@@ -1,5 +1,5 @@
-use Oberth::Manoeuvre::Common::Setup;
-package Oberth::CLI::Command::Account;
+use Orbital::Transfer::Common::Setup;
+package Orbital::CLI::Command::Account;
 # ABSTRACT: A subcommand for accounts
 
 use Moo;

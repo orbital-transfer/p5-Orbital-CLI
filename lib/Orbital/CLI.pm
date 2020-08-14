@@ -1,19 +1,19 @@
-use Oberth::Manoeuvre::Common::Setup;
-package Oberth::CLI;
-# ABSTRACT: Run Oberth
+use Orbital::Transfer::Common::Setup;
+package Orbital::CLI;
+# ABSTRACT: Run Orbital
 
 use Moo;
 use CLI::Osprey;
 use Hash::Merge;
 use Module::Load;
-use Module::Pluggable require => 1, search_path => ['Oberth::CLI::Container'];
+use Module::Pluggable require => 1, search_path => ['Orbital::CLI::Container'];
 
 classmethod _load_commands() {
 	my $merger = Hash::Merge->new('LEFT_PRECEDENT');
 	my $merged = {
 		''        ,=> __PACKAGE__,
-		'service'  => 'Oberth::CLI::Service',
-		'account'  => 'Oberth::CLI::Command::Account',
+		'service'  => 'Orbital::CLI::Service',
+		'account'  => 'Orbital::CLI::Command::Account',
 	};
 
 	for my $plugin ($class->plugins) {

@@ -1,5 +1,5 @@
-use Oberth::Manoeuvre::Common::Setup;
-package Oberth::CLI::Service;
+use Orbital::Transfer::Common::Setup;
+package Orbital::CLI::Service;
 # ABSTRACT: Placeholder for service commands
 
 use Moo;

@@ -4,7 +4,7 @@
 
 =head1 NAME
 
-Oberth::CLI - Run Oberth
+Orbital::CLI - Run Orbital
 
 =head1 VERSION
 

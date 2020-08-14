@@ -1,8 +1,8 @@
-use Oberth::Manoeuvre::Common::Setup;
-package Oberth::CLI::Command::Role::Option::RepoPath;
+use Orbital::Transfer::Common::Setup;
+package Orbital::CLI::Command::Role::Option::RepoPath;
 # ABSTRACT: A role for commands that take a repo path
 
-use Oberth::Manoeuvre::Common::Types qw(AbsDir);
+use Orbital::Transfer::Common::Types qw(AbsDir);
 use Path::Tiny;
 
 use Moo::Role;
