@@ -8,6 +8,8 @@ use Hash::Merge;
 use Module::Load;
 use Module::Pluggable require => 1, search_path => ['Orbital::CLI::Container'];
 
+our $COMMANDS;
+
 classmethod _load_commands() {
 	my $merger = Hash::Merge->new('LEFT_PRECEDENT');
 	my $merged = {
@@ -24,6 +26,7 @@ classmethod _load_commands() {
 		{
 			no strict 'refs'; ## no critic
 			my ($pre, $post) = $key =~ m,(?:(.*)/)?([^/]+),;
+			$COMMANDS->{$key} = 1;
 			$pre //= '';
 			load $merged->{$pre} if $pre;
 			&{ $merged->{$pre} . '::subcommand'}($post => $merged->{$key});
@@ -33,7 +36,8 @@ classmethod _load_commands() {
 
 
 method run(@) {
-	...
+	$self->_load_commands;
+	print join("\n", sort keys %$COMMANDS), "\n";
 }
 
 __PACKAGE__->_load_commands;
