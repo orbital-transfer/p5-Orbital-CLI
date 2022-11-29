@@ -2,6 +2,7 @@ use Orbital::Transfer::Common::Setup;
 package Orbital::CLI;
 # ABSTRACT: Run Orbital
 
+use Orbital::Transfer::Common::Setup;
 use Moo;
 use CLI::Osprey;
 use Hash::Merge;
