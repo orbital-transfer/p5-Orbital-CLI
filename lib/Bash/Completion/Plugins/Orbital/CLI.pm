@@ -1,7 +1,8 @@
 package Bash::Completion::Plugins::Orbital::CLI;
 # ABSTRACT: Bash::Completion plugin for Orbital::CLI
 
-use Modern::Perl;
+use strict;
+use warnings;
 use parent 'Bash::Completion::Plugins::CLI::Osprey';
 use Path::Tiny;
 use Types::Path::Tiny qw(Path Dir AbsDir File AbsFile);
