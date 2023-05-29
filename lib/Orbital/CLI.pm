@@ -4,7 +4,7 @@ package Orbital::CLI;
 
 use Orbital::Transfer::Common::Setup;
 use Moo;
-use CLI::Osprey;
+use CLI::Osprey on_demand => 1;
 use Hash::Merge;
 use Module::Load;
 use Module::Pluggable require => 1, search_path => ['Orbital::CLI::Container'];

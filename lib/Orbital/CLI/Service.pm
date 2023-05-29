@@ -4,6 +4,6 @@ package Orbital::CLI::Service;
 
 use Orbital::Transfer::Common::Setup;
 use Moo;
-use CLI::Osprey;
+use CLI::Osprey on_demand => 1;
 
 1;

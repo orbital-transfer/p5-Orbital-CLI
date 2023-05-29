@@ -6,7 +6,7 @@ use Orbital::Transfer::Common::Setup;
 use Orbital::Transfer::Common::Types qw(AbsDir);
 
 use Moo::Role;
-use CLI::Osprey;
+use CLI::Osprey on_demand => 1;
 
 option repo_path => (
 	is => 'ro',
