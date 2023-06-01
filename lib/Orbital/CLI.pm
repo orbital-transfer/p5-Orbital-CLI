@@ -17,6 +17,7 @@ classmethod _load_commands() {
 		''        ,=> __PACKAGE__,
 		'service'  => 'Orbital::CLI::Service',
 		'account'  => 'Orbital::CLI::Command::Account',
+		'dump'     => 'Orbital::CLI::Command::Dump',
 	};
 
 	for my $plugin ($class->plugins) {
